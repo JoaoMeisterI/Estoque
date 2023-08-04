@@ -317,3 +317,42 @@
     filter: brightness(80%);
     box-shadow: 0 0 5px var(--link-dark-color);
   }
+
+/* Estilizando a label "Filtro" */
+.label {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(0, 0, 0); /* Cor azul */
+  margin-right: 10px;
+}
+
+/* Estilizando o select */
+.select {
+  font-size: 16px;
+  padding: 10px 14px;
+  border: 2px solid rgb(32, 112, 161); /* Borda azul */
+  border-radius: 4px;
+  color: rgb(0, 0, 0); /* Cor do texto branco */
+  background-color: rgb(156, 217, 255); /* Cor de fundo azul */
+  cursor: pointer;
+}
+
+/* Estilizando as opções do select */
+.option {
+  background-color: rgb(0, 0, 0); /* Cor de fundo para as opções */
+  color: rgb(156, 217, 255); /* Cor do texto das opções */
+}
+
+/* Estilizando a seta de dropdown do select (funciona em alguns navegadores) */
+.select::-ms-expand {
+  display: none;
+}
+select::after {
+  content: '\25BC'; /* Setinha para baixo */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: white; /* Cor da setinha branca */
+  pointer-events: none; /* Garante que a setinha não interfere em eventos de clique */
+}

@@ -1,0 +1,121 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+   
+       
+        <form action="{% url 'stock:filtro' %}" method="post">
+            {% csrf_token %}
+            <label for="filtro" class="label">Categoria:</label>
+            <select id="filtro" class="select" name="categoria">
+                <option value="capa" class="option">---</option>
+                {% for categoria in categorias %}
+                    <option value="{{categoria.name}}" class="option">{{categoria}}</option>
+                    
+                {% endfor %}
+                 <input type="submit" value="Enviar">
+            </select>
+           
+        </form>
+        
+            
+
+
+    <div class="search" style="margin-bottom: 5vh;">
+        <form action="{% url 'stock:pesquisa' %}" method="get">
+            <input type="text" class="search-input" placeholder="Search" id="search" name="q">
+        </form>
+    </div>
+
+
+
+{%if page_obj %}
+ 
+
+    <div class="responsive-table">
+        <table class="contacts-table">
+            <caption class="table-caption">
+                Contacts 
+            </caption>
+
+            <!--Aonde você coloca os títulos da tabela-->
+            <thead>
+                <tr class="table-row table-row-header">
+                    <!--cada titulo-->
+                    <th class="table-header">Id</th>
+                    <th class="table-header">Nome</th>
+                    <th class="table-header">Descrição</th>
+                    <th class="table-header">Marca</th>
+                    <th class="table-header">Preço</th>
+                    <th class="table-header">Fornecedor</th>
+                    <th class="table-header">Quantidade</th>
+                    <th class="table-header">Categoria</th>
+                    <th class="table-header">Adicionar</th>
+                    <th class="table-header">Remover</th>
+                    
+                </tr>
+            </thead>
+            <!--corpo da tabela-->
+            <tbody>
+
+                {% for item in page_obj%}
+
+                    <tr class="table-row">
+                        <td class="table-cel">
+                            <!--passando parâmetro pela url dinâmica-->
+                            <a href="#" class="table-link">
+                                {{item.id}}
+                            </a>
+                        </td>
+                        <td class="table-cel">
+                            {{item.name}}
+                        </td>
+                        <td class="table-cel">
+                            {{item.description}}
+                        </td>
+                        <td class="table-cel">
+                            {{item.marca}}
+                        </td>   
+                        <td class="table-cel">
+                            {{item.preco}}
+                        </td>
+                        <td class="table-cel">
+                            {{item.fornecedor}}
+                        </td>
+
+                        <td class="table-cel">
+                            {{item.quantidade}}
+                        </td>
+                        <td class="table-cel">
+                            {{item.categoria.name}}
+                        </td>
+                        <td class="table-cel">
+                            <a href=""><button class="btn" style="width: 10vh;">+</button></a>
+                        </td>
+                        <td class="table-cel">
+                            <a href=""><button class="btn" style="background-color: red ; width:10vh;">-</button></a>
+                        </td>
+                    </tr>
+            
+                {% endfor %}
+  
+            </tbody>
+
+
+        </table>
+    </div>
+{% else %}
+<div class="single-contact">
+    <h1 class="single-contact">
+        Nenhum cadastro com esse nome 
+    </h1>
+
+</div>
+{% endif %}
+
+
+{% endblock content %}
+
+
+
+
