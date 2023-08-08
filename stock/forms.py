@@ -20,3 +20,18 @@ class MateriasForm(forms.ModelForm):
             'garantia','quantidade','categoria',
         )
 
+
+
+class DestinoForm(forms.ModelForm):
+    local = forms.CharField(label='Local de Envio')
+    motivo = forms.CharField(label='Motivo')
+    
+    class Meta:
+        model = models.Destino
+        fields = (
+            'local','motivo'
+        )
+        
+
+
+

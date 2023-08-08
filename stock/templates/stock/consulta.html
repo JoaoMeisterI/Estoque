@@ -13,7 +13,7 @@
                     <option value="{{categoria.name}}" class="option">{{categoria}}</option>
                     
                 {% endfor %}
-                 <input type="submit" value="Enviar">
+                 <input class="btn" type="submit" value="Enviar" style="margin-left: 2vh;">
             </select>
            
         </form>
@@ -21,9 +21,9 @@
             
 
 
-    <div class="search" style="margin-bottom: 5vh;">
+    <div class="search" style="margin: 5vh;">
         <form action="{% url 'stock:pesquisa' %}" method="get">
-            <input type="text" class="search-input" placeholder="Search" id="search" name="q">
+            <input type="text" class="search-input" placeholder="Pesquisa" id="search" name="q">
         </form>
     </div>
 
@@ -42,16 +42,16 @@
             <thead>
                 <tr class="table-row table-row-header">
                     <!--cada titulo-->
-                    <th class="table-header">Id</th>
-                    <th class="table-header">Nome</th>
-                    <th class="table-header">Descrição</th>
-                    <th class="table-header">Marca</th>
-                    <th class="table-header">Preço</th>
-                    <th class="table-header">Fornecedor</th>
-                    <th class="table-header">Quantidade</th>
-                    <th class="table-header">Categoria</th>
-                    <th class="table-header">Adicionar</th>
-                    <th class="table-header">Remover</th>
+                    <th class="table-header" style="text-align: center;">Id</th>
+                    <th class="table-header" style="text-align: center;">Nome</th>
+                    <th class="table-header" style="text-align: center;">Descrição</th>
+                    <th class="table-header" style="text-align: center;">Marca</th>
+                    <th class="table-header" style="text-align: center;">Preço</th>
+                    <th class="table-header" style="text-align: center;">Fornecedor</th>
+                    <th class="table-header" style="text-align: center;">Categoria</th>
+                    <th class="table-header" style="text-align: center;">Quantidade</th>
+                    <th class="table-header" style="text-align: center;">Adicionar</th>
+                    <th class="table-header" style="text-align: center;">Remover</th>
                     
                 </tr>
             </thead>
@@ -61,39 +61,38 @@
                 {% for item in page_obj%}
 
                     <tr class="table-row">
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             <!--passando parâmetro pela url dinâmica-->
-                            <a href="#" class="table-link">
+                            <a href="{% url 'stock:item' item.id %} " class="table-link">
                                 {{item.id}}
                             </a>
                         </td>
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             {{item.name}}
                         </td>
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             {{item.description}}
                         </td>
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             {{item.marca}}
                         </td>   
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             {{item.preco}}
                         </td>
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
                             {{item.fornecedor}}
                         </td>
-
-                        <td class="table-cel">
+                        <td class="table-cel" style="text-align: center;">
+                            {{item.categoria.name}}
+                        <td class="table-cel" style="text-align: center;">
                             {{item.quantidade}}
                         </td>
-                        <td class="table-cel">
-                            {{item.categoria.name}}
                         </td>
                         <td class="table-cel">
-                            <a href=""><button class="btn" style="width: 10vh;">+</button></a>
+                            <a href="{% url 'stock:add' item.id %}"><button class="btn" style="width: 10vh;">+</button></a>
                         </td>
                         <td class="table-cel">
-                            <a href=""><button class="btn" style="background-color: red ; width:10vh;">-</button></a>
+                            <a href="{% url 'stock:remove' item.id %}"><button class="btn" style="background-color: red ; width:10vh;">-</button></a>
                         </td>
                     </tr>
             

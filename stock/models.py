@@ -14,13 +14,18 @@ class Categoria(models.Model):
 
 
 class Destino(models.Model):
+    name = models.ForeignKey(
+        Materias,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
     local = models.CharField(max_length=70)
     motivo = models.CharField(max_length=300)
     data = models.DateTimeField(default=timezone.now)
     
     def __str__(self) -> str:
         return f'{self.local}'
-    
 
 
 
@@ -50,5 +55,4 @@ class Materias(models.Model):
     def __str__(self) -> str:
         return f'{self.name}'
     
-
     

@@ -149,6 +149,7 @@
   .table-cel,
   .table-header {
     padding: var(--spacing);
+
   }
   
   .table-link {

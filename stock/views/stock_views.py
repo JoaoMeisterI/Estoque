@@ -120,3 +120,11 @@ def atualizar(request,id_item):
         'stock/cadastrar.html',
         contexto
     )
+
+
+def removeItem(request,id_item):
+    item = get_object_or_404(Materias,pk=id_item)
+    
+    item.delete()
+    
+    return redirect('stock:consulta')
