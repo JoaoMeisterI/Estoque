@@ -13,19 +13,6 @@ class Categoria(models.Model):
         return f'{self.name}'
 
 
-class Destino(models.Model):
-    name = models.ForeignKey(
-        Materias,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
-    local = models.CharField(max_length=70)
-    motivo = models.CharField(max_length=300)
-    data = models.DateTimeField(default=timezone.now)
-    
-    def __str__(self) -> str:
-        return f'{self.local}'
 
 
 
@@ -45,14 +32,28 @@ class Materias(models.Model):
         blank=True,
         null=True,
     )
-    destino = models.ForeignKey(
-        Destino,
-        on_delete=models.SET_NULL,
-        blank=True,
-        null=True,
-    )
+    
     
     def __str__(self) -> str:
         return f'{self.name}'
     
     
+    
+class Destino(models.Model):
+    #Antes estava name, da conflito! o nome da chave estrangeira não pode ser o 
+    # mesmo que 
+    #está na chave prímaria da outra tabela
+    material = models.ForeignKey(
+        Materias,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
+    )
+    local = models.CharField(max_length=70)
+    motivo = models.CharField(max_length=300)
+    data = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self) -> str:
+        return f'{self.local}'
+
+

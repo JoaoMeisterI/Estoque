@@ -29,7 +29,7 @@ class DestinoForm(forms.ModelForm):
     class Meta:
         model = models.Destino
         fields = (
-            'local','motivo'
+            'material','local','motivo'
         )
         
 

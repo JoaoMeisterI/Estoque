@@ -25,6 +25,7 @@ urlpatterns = [
     
     path('stock/<int:id_item>/item',views.item,name='item'),
     path('stock/enviar/',views.enviar,name='enviar'),
+    path('stock/historico/',views.historico,name='historico'),
     
     
 ]

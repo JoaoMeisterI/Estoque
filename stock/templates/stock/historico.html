@@ -1,0 +1,71 @@
+{% extends 'global/base.html' %}
+
+{% block content %}
+
+   
+      
+
+
+{%if page_obj %}
+ 
+
+    <div class="responsive-table">
+        <table class="contacts-table">
+            <caption class="table-caption">
+                Contacts 
+            </caption>
+
+            <!--Aonde você coloca os títulos da tabela-->
+            <thead>
+                <tr class="table-row table-row-header">
+                    <!--cada titulo-->
+
+                    <th class="table-header" style="text-align: center;">Nome</th>
+                    <th class="table-header" style="text-align: center;">Destino</th>
+                    <th class="table-header" style="text-align: center;">Motivo</th>
+                    <th class="table-header" style="text-align: center;">Preço</th>
+                    
+                </tr>
+            </thead>
+            <!--corpo da tabela-->
+            <tbody>
+
+                {% for item in page_obj%}
+
+                    <tr class="table-row">
+                        <td class="table-cel" style="text-align: center;">
+                            {{item.material}}
+                        </td>
+                        <td class="table-cel" style="text-align: center;">
+                            {{item.local}}
+                        </td>
+                        <td class="table-cel" style="text-align: center;">
+                            {{item.motivo}}
+                        </td>
+                       {% comment %} Agora tu consegue acessar tudo de materias {% endcomment %}
+                        <td class="table-cel" style="text-align: center;">
+                            {{item.material.preco}}
+                        </td>     
+                    </tr>
+            
+                {% endfor %}
+  
+            </tbody>
+
+
+        </table>
+    </div>
+{% else %}
+<div class="single-contact">
+    <h1 class="single-contact">
+        Nenhum cadastro com esse nome 
+    </h1>
+
+</div>
+{% endif %}
+
+
+{% endblock content %}
+
+
+

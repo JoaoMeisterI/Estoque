@@ -7,13 +7,13 @@ from stock import models
 
 @admin.register(models.Materias)
 class MateriasAdmin(admin.ModelAdmin):
-    list_display = 'name','modelo','data','categoria','destino',
+    list_display = 'name','modelo','data','categoria',
     
     
 
 @admin.register(models.Destino)
 class DestinoAdmin(admin.ModelAdmin):
-    list_display = 'local','motivo','data',
+    list_display = 'local','motivo','data','material',
     
 
 
